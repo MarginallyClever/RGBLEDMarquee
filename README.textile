@@ -1,0 +1,59 @@
+h1. RGBLEDMaruqee
+
+_A full color RGB marquee that can be updated in real time_
+
+h2. About
+
+Maruees have scrolling text.  Think of a stock ticker.
+
+This ticker has wavy rainbow colors, antialiasing, and the message is generated in real time.
+You can update the message by sending them to the arduino through serial.  Don't forget the newline character!
+Messages can be up to one tweet long (140 characters).
+
+This ticker was built as part of the Arduino Programming 101 course.  This is an advanced example of what you can do by combining things from previous lessons.
+
+h2. Get it
+
+"The LEDs":https://www.marginallyclever.com/shop/el-wire-leds/led-strip-64pc-12mm-ws2811
+
+Please visit "Our homepage":http://www.marginallyclever.com/ for an explanation of how it works.
+
+h2. Get help
+
+Please visit "the forums":https://marginallyclever.com/forum 
+
+h2. Special thanks
+
+Hey, thanks for taking the time to read this.  You're thorough.  I like that!
+
+Thank you to Adafruit Industries for their Neopixel LED library.
+
+h2. Notes
+
+More details are in the code itself.
+
+h2. Legal
+
+
+This file is part of RGBLEDMaruqee.
+
+RGBLEDMaruqee is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+RGBLEDMaruqee is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with Arduino Timer Interrupt. If not, see http://www.gnu.org/licenses/
+
+
+h2. See Also
+
+* "The LEDs":https://www.marginallyclever.com/shop/el-wire-leds/led-strip-64pc-12mm-ws2811
+* "Our homepage":https://www.marginallyclever.com/ 
+* "The wiki":https://learn.marginallyclever.com/
+* "The forums":https://marginallyclever.com/forum/
