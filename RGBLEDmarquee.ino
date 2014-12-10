@@ -22,6 +22,7 @@
 #define STRAND_LENGTH   (64)  // How many LEDS in this strand?  An UNO can handle up to 256.
 
 #define MAX_MESSAGE_LEN (140)  // One tweet
+#define BAUD            (57600)  // Speed of serial
 #define GRID_W          (8)  // Maruqee size
 #define GRID_H          (8)  // Maruqee size
 
@@ -50,6 +51,11 @@
 #define FONT_W_CHARS    (FONT_W_PIXELS/LETTER_W)
 #define FONT_H_CHARS    (FONT_H_PIXELS/LETTER_H)
 
+// An array is a numerically indexed list.  The first index number is always 0.
+// this array is called font and contains the data to draw 256 characters of ASCII text.
+// PROGMEM tells Arduino "don't load this array into RAM" ...because it doesn't have that much RAM and would crash.
+// instead it loads the array as needed.  search for "font" to find out how.
+// There are more complicated ways to store this map that use a lot less memory... but who cares?
 const prog_uchar PROGMEM font[FONT_W_PIXELS*FONT_H_PIXELS] = {
 0,0,0,0,0,0,0,0,0,1,1,1,1,1,1,0,0,1,1,1,1,1,1,0,0,1,1,0,1,1,0,0,0,0,0,1,0,0,0,0,0,0,1,1,1,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1,1,1,1,1,1,0,0,0,0,0,0,0,0,1,1,1,1,1,1,1,1,0,0,0,0,1,1,1,1,0,0,1,1,1,1,0,0,0,0,1,1,1,1,1,1,0,0,1,1,1,1,1,1,0,0,0,1,1,0,0,0,
 0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0,0,0,1,1,1,0,0,0,0,0,1,1,1,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1,1,1,1,1,1,0,0,1,1,1,1,0,0,1,1,0,0,0,0,1,1,0,0,0,0,0,0,1,1,0,1,0,0,0,0,1,0,0,0,1,0,0,0,0,1,0,0,1,0,0,0,0,1,1,1,0,1,1,0,1,1,
@@ -212,8 +218,8 @@ int new_message_received=0;
 
 
 void setup() {
-  Serial.begin(57600);
-  Serial.println(F("Hello, World."));
+  Serial.begin(BAUD);
+  Serial.println(F("Hello, World."));  // F() stores the string in program memory.
   
   strip.begin();
   strip.show(); // Initialize all pixels to 'off'
@@ -308,6 +314,7 @@ float get_pixel(int x,int y) {
   if( fx > FONT_W_PIXELS-1 ) fx = FONT_W_PIXELS-1;
   
   // if pixel == WHITE_ON_BLACK, turn on the light
+  // pgm_read_byte_near() pulls the 1 or 0 from font into RAM
   return pgm_read_byte_near(font + fy * FONT_W_PIXELS + fx);
 }
 
