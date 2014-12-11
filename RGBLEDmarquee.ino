@@ -285,6 +285,7 @@ void p(int x,int y,long color) {
 
 
 // some wavy rainbow color fun
+long c(int x,int y,float v) {
   return strip.Color(v*(cos(        x*0.3)*127.0f+127),
                      v*(sin(        x*0.1)*127.0f+127),
                      v*(sin(3.14159+x*0.1)*127.0f+127));
@@ -342,7 +343,7 @@ void display_message() {
 #if ANTIALIAS == 0        
         pixel = get_pixel(x+scroll_step,y);
 #else
-	    pixel = get_pixel(x+scroll_step  ,y) * (1.0f - antialias)
+        pixel = get_pixel(x+scroll_step  ,y) * (1.0f - antialias)
               + get_pixel(x+scroll_step+1,y) * (antialias);
 #endif
 
